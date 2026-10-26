@@ -341,5 +341,6 @@ jobs:
 
             Install the MSI matching your Windows architecture (x64 or ARM64).
             This is an unofficial fork; the original project is at https://github.com/riyasy/FlyPhotos.
+          prerelease: ${{ contains(inputs.release_tag || github.ref_name, '-sanity.') }}
           files: release-assets/*.msi
           fail_on_unmatched_files: true

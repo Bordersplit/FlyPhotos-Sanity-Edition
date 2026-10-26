@@ -1,4 +1,14 @@
-# Fly Photos [![Github All Releases](https://img.shields.io/github/downloads/riyasy/FlyPhotos/total.svg)]()
+# Fly Photos — Sanity Edition [![GitHub All Releases](https://img.shields.io/github/downloads/Bordersplit/FlyPhotos-Sanity-Edition/total.svg)]()
+
+This is an **unofficial personal fork** of [Fly Photos](https://github.com/riyasy/FlyPhotos), maintained for personal quality-of-life improvements and bug fixes. Changes may be developed with AI assistance, tested here, and submitted upstream as pull requests when they are useful to the original project.
+
+The original project and its releases remain at [riyasy/FlyPhotos](https://github.com/riyasy/FlyPhotos). This fork's builds and releases are independent.
+
+## Working with this fork
+
+- The `upstream` remote points to the original project; `origin` points to this fork.
+- To bring in original project updates, run `git fetch upstream` and `git merge upstream/main`, then review and test the result before publishing.
+- To propose a useful improvement to the original project, push its branch to this fork and open a pull request from that branch to `riyasy/FlyPhotos`.
 
 Fly Photos is one of the fastest photo viewers for Windows, designed as a modern replacement for the now-discontinued Google Picasa Photo Viewer.  
 Built with **WinUI 3, WinRT, and Win2D**, it delivers smooth animations, instant startup, and an efficient viewing experience.  
@@ -37,7 +47,11 @@ Both builds are the same app, with the same features.
 ## 📦 Installation
 
 - Option 1 : [**Install from Microsoft Store**](https://apps.microsoft.com/detail/9pmsk128v1qt?launch=true&cid=from_github&mode=full)
-- Option 2 : Download the MSI for your architecture (x64 or ARM64) from the GitHub [**Releases Page**](https://github.com/riyasy/FlyPhotos/releases)
+- Option 2 : Download the MSI for your architecture (x64 or ARM64) from this fork's GitHub [**Releases Page**](https://github.com/Bordersplit/FlyPhotos-Sanity-Edition/releases)
+
+### Build and publish a release
+
+In this fork, open **Actions → Build Installer → Run workflow**, choose the target architecture(s), and enter a new release tag (for example, `v1.0.0`). When the build succeeds, GitHub publishes the x64 and/or ARM64 MSI installers as a release.
 
 **Requires** Windows 10 version 1809 (build 17763) or newer, on x64 or ARM64.
 
@@ -53,7 +67,7 @@ Right-click an image, select **"Open with"**, and choose **Fly Photos** from the
 Launch **Fly Photos** directly from the Start menu, then use the file picker to browse to a folder or image.
 
 ### 3. Set as Default App
-To open images with Fly Photos automatically when you double-click them:
+To open photos with Fly Photos automatically when you double-click them:
 1. Right-click an image file (e.g., a `.jpg`).
 2. Select **"Open With"** → **"Choose Another App"**, pick **FlyPhotos**, and click **Always**.
 3. Repeat for other file types (PNG, WEBP, etc.) as needed.
@@ -170,7 +184,8 @@ Rows marked **configurable** can be changed in **Settings → Mouse**; the value
 ---
 
 ## 📊 Feedback
-- Issues and feature requests: [GitHub Issues](https://github.com/riyasy/FlyPhotos/issues)  
+- Issues and feature requests for this fork: [GitHub Issues](https://github.com/Bordersplit/FlyPhotos-Sanity-Edition/issues)
+- Original project: [riyasy/FlyPhotos](https://github.com/riyasy/FlyPhotos)
 - Feedback: **ryftools@outlook.com**  
 
 ---

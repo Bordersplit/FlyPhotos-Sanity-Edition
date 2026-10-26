@@ -2,7 +2,7 @@ name: Build Installer
 
 # Same as build.yml (native + Rust + AOT publish for x64 and ARM64) but with an
 # extra step that builds the WiX MSI installer from the publish output and
-# uploads it as an artifact. Triggered manually from the Actions tab.
+# publishes the installers as a GitHub release. Triggered manually from Actions.
 on:
   workflow_dispatch:
     inputs:
@@ -21,6 +21,10 @@ on:
         options:
           - Build fresh
           - Use committed (skip native build)
+      release_tag:
+        description: Release tag to create after a successful build (for example, v1.0.0)
+        type: string
+        required: true
 
 jobs:
   # Turn the "platform" choice into the build matrix. The matrix context is not
@@ -307,3 +311,31 @@ jobs:
         with:
           name: FlyPhotos-${{ matrix.platform }}-MSI
           path: Src/FlyPhotosSetup/bin/${{ matrix.platform }}/Release/FlyPhotosInstaller_*_${{ matrix.platform }}.msi
+
+  release:
+    name: Publish GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download MSI artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: FlyPhotos-*-MSI
+          path: release-assets
+          merge-multiple: true
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag }}
+          target_commitish: ${{ github.sha }}
+          name: Fly Photos — Sanity Edition ${{ inputs.release_tag }}
+          body: |
+            Personal Sanity Edition build of Fly Photos.
+
+            Install the MSI matching your Windows architecture (x64 or ARM64).
+            This is an unofficial fork; the original project is at https://github.com/riyasy/FlyPhotos.
+          files: release-assets/*.msi
+          fail_on_unmatched_files: true
